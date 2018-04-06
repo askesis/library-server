@@ -1,31 +1,22 @@
 import React from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 
-import Books from '../api/books'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Home from '../ui/components/Home';
+import Routes from './layout/Routes';
+import { BrowserRouter as Router } from 'react-router-dom'; 
 
 class App extends React.Component {
   render() {
     const { loading, books } = this.props;
     return (
       <React.Fragment > 
-        { !loading && <Home books={books} /> }
+        <Router>
+          <Routes/>
+        </Router>
       </React.Fragment>
     );
   }
 }
 
-const AppWithTracker = withTracker(() => {
-  const booksSubs = Meteor.subscribe('books.public');
-  const loading = !booksSubs.ready();
-  const books = Books.find().fetch();
-
-  return {
-    loading,
-    books,
-  };
-})(App);
-
-
-export default AppWithTracker;
+export default App;

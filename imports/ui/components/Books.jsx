@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Home extends Component {
+class Books extends Component {
 
 rendererList(){
   const { books } = this.props;
@@ -33,4 +33,4 @@ rendererList(){
   }
 }
 
-export default Home;
+export default Books;
