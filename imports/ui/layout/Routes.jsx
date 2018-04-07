@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router';
 import { Redirect, withRouter } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 
+import SignIn from '../pages/auth/SignIn';
 import Books from '../../api/books';
 import Home from './Home';
 import BooksList from '../components/Books';
@@ -11,14 +12,18 @@ import Main from './Main';
 class Routes extends Component {
   
   render() {
-    const account = true;
-    const { books, loading } = this.props;
+    const { books, loading, user } = this.props;
     
     if ( loading ) return null; 
 
+    console.log(user);
+
     return (
       <React.Fragment>
-        { account && (
+
+        { !user && <Route path="/sign-in" exact component={SignIn} />}
+
+        { user && (
           <Switch>
             <Main>
               <Route path="/" exact component={Home} />
@@ -36,10 +41,12 @@ const RoutesWithTracker = withTracker(() => {
   const booksSubs = Meteor.subscribe('books.public');
   const loading = !booksSubs.ready();
   const books = Books.find().fetch();
+  const user = Meteor.user();
 
   return {
     loading,
     books,
+    user
   };
 })(Routes);
 

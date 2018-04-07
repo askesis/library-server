@@ -11,6 +11,8 @@ import {
   NavLink,
 } from 'reactstrap';
 
+import LogOut from '../components/common/LogOut';
+
 class TopNavbar extends Component {
   constructor(props) {
     super(props);
@@ -66,6 +68,7 @@ class TopNavbar extends Component {
                 Accounts
               </NavLink>
             </NavItem>
+            <LogOut />
           </Nav>
         </Collapse>
       </Navbar>
