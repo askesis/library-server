@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container } from 'reactstrap';
 
 class Books extends Component {
 
@@ -24,11 +25,10 @@ rendererList(){
 
   render() {
     return (
-      <React.Fragment> 
-        <h1>Library</h1>
+      <Container> 
         <br/>
         {this.rendererList()}
-      </React.Fragment>
+      </Container>
     );
   }
 }

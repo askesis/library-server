@@ -16,8 +16,6 @@ class Routes extends Component {
     
     if ( loading ) return null; 
 
-    console.log(user);
-
     return (
       <React.Fragment>
 
