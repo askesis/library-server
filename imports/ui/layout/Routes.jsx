@@ -3,17 +3,19 @@ import { Switch, Route } from 'react-router';
 import { Redirect, withRouter } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 
-import SignIn from '../pages/auth/SignIn';
 import Books from '../../api/books';
 import Home from './Home';
 import BooksList from '../components/Books';
 import Main from './Main';
 
+import Account from '../pages/Account';
+import SignIn from '../pages/auth/SignIn';
+
 class Routes extends Component {
   
   render() {
     const { books, loading, user, location } = this.props;
-    console.log( loading, user);
+
     if ( loading ) return null; 
     
     if ( !loading && !user && location.pathname !== "/sign-in" ) {
@@ -31,6 +33,8 @@ class Routes extends Component {
               <Route path="/" exact component={Home} />
               <Route path="/books" exact render={ () => <BooksList books={books}/> } />
               <Route path="/home" exact component={ Home } />
+              <Route path="/account" exact component={ Account } />
+
             </Main>
           </Switch>
         )}

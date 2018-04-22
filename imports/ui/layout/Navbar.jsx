@@ -65,7 +65,7 @@ class TopNavbar extends Component {
                 href="/account"
                 onClick={e => this.handleClick('/account', e)}
               >
-                Accounts
+                Account
               </NavLink>
             </NavItem>
             <LogOut />
