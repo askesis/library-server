@@ -12,9 +12,13 @@ import Main from './Main';
 class Routes extends Component {
   
   render() {
-    const { books, loading, user } = this.props;
-    
+    const { books, loading, user, location } = this.props;
+    console.log( loading, user);
     if ( loading ) return null; 
+    
+    if ( !loading && !user && location.pathname !== "/sign-in" ) {
+       return <Redirect to="/sign-in" />
+    }
 
     return (
       <React.Fragment>
