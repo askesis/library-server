@@ -1,11 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { withTracker } from 'meteor/react-meteor-data';
 
-class App extends Component {
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Routes from './layout/Routes';
+import { BrowserRouter as Router } from 'react-router-dom'; 
+
+class App extends React.Component {
   render() {
+    const { loading, books } = this.props;
     return (
-      <div>
-        <h1> Hi</h1>
-      </div>
+      <React.Fragment > 
+        <Router>
+          <Routes/>
+        </Router>
+      </React.Fragment>
     );
   }
 }

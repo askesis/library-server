@@ -1,0 +1,2 @@
+import './publication';
+import './fixtures';
